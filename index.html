@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADA Comics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-200">
+
+    <!-- Titulo Principal -->
+    <header class="bg-black py-1">
+        <div class="bg-red-600 w-max mx-auto px-4 py-2">
+        <h1 class="text-white text-4xl font-bold text-center">ADA COMICS</h1>
+        </div>
+    </header>
+
+<!-- Seccion Imagen -->
+
+<section>
+    <img src="http://i.annihil.us/u/prod/marvel/i/mg/1/b0/5269678709fb7.jpg" alt="imagen de Comics" id="imagen-marvel" class="w-full h-96 object-cover">
+</section>
+
+<!-- Sección de búsqueda -->
+<section class="p-4 px-32 pb-20" id="formBusqueda"> <!-- Aumenté px-32 para mayor espacio horizontal -->
+    <h2 class="text-xl font-bold mb-4">Búsqueda</h2>
+    <div class="flex flex-col gap-4 sm:flex-row">
+        <!-- Campo de búsqueda ajustado -->
+        <div class="flex-2 sm:w-1/2 flex items-center gap-2"> <!-- Flex para label e input -->
+            <label for="search" class="text-sm font-medium"><i class="fas fa-search"></i></label>
+            <input 
+                type="text" 
+                id="inputBusqueda" 
+                placeholder="Ingresa tu búsqueda"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+            >
+        </div>
+
+        <!-- Tipo de búsqueda con label al lado del select -->
+        <div class="flex-1 sm:w-1/4 flex items-center gap-2"> <!-- Flex para label y select -->
+            <label for="type" class="text-sm font-medium">Tipo</label>
+            <select id="tipoBusqueda" class="w-full p-2 border border-gray-300 rounded-lg">
+                <option value="comics">Comics</option>
+                <option value="characters">Personajes</option>
+            </select>
+        </div>
+
+        <!-- Orden con label al lado del select -->
+        <div class="flex-1 sm:w-1/4 flex items-center gap-2"> <!-- Flex para label y select -->
+            <label for="order" class="text-sm font-medium">Orden</label>
+            <select id="order" class="w-full p-2 border border-gray-300 rounded-lg">
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
+                <option value="newest">Más nuevos</option>
+                <option value="oldest">Más viejos</option>
+            </select>
+        </div>
+
+        <!-- Botón de búsqueda -->
+        <div class="flex-1 sm:w-1/4 flex items-end">
+            <button class="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700">
+                BUSCAR
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Seccion para mostrar los resultados  -->
+
+<div class="bg-gray-100 p-6"> 
+    <div id="resultado" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 px-4 max-w-7xl mx-auto"></div>
+</div>
+
+<!-- Contenedor para mostrar los detalles del item seleccionado -->
+
+<div id="detalles" class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg mt-8 hidden">
+    <h2 id="titulo" class="text-2xl font-bold mb-4"></h2>
+    <img id="imagen" class="w-1/3 mb-4 rounded-lg" alt="Imagen">
+    <p id="descripcion" class="text-lg"></p>
+    <button id="cerrarDetalles" class="bg-red-500 text-white px-4 py-2 rounded-lg mb-4">Cerrar</button>
+</div>
+
+
+
+<footer class="bg-black py-7"> <!-- Aumenté el padding para que sea más grueso -->
+    <p class="text-center text-white">Hecho con <span class="text-red-600">❤️</span> por Andrea</p>
+</footer>
+
+
+<script src="andre.js"></script> 
+</body>
+</html>
