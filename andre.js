@@ -6,7 +6,7 @@ const ts = "Holamarvel";
 const hash = "507629fe3eecbcbf2c65b872698375a3";
 const paramAutenticacion = `?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
-// Referencias a elementos del DOM
+// DOM
 const formBusqueda = document.getElementById('formBusqueda');
 const inputBusqueda = document.getElementById('inputBusqueda');
 const tipoBusqueda = document.getElementById('tipoBusqueda');
@@ -42,7 +42,7 @@ function mostrarResultados(data, tipo) {
         divElemento.classList.add('text-center', 'flex', 'flex-col', 'items-center');
 
         const titulo = item.title || item.name;
-        const imagenSrc = item.thumbnail.path + "." + item.thumbnail.extension;
+        const imagenSrc = `${item.thumbnail.path}.${item.thumbnail.extension}`;
         const id = item.id;
 
         divElemento.innerHTML = `
@@ -71,18 +71,27 @@ function buscar(tipo, nombre) {
         url += `&${queryParam}=${encodeURIComponent(nombre)}`;
     }
 
+    // Esperador de respuesta
+    resultado.innerHTML = '<p class="text-center text-xl">Cargando...</p>';
+
     fetch(url, {
         method: "GET",
         headers: {
             "content-type": "application/json",
         },
     })
-    .then((response) => response.json())
+    .then((response) => {
+        if (!response.ok) throw new Error('Error en la red');
+        return response.json();
+    })
     .then((data) => {
         mostrarResultados(data, tipo);
         manejarBotonesPaginacion(data.data.total);
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        resultado.innerHTML = '<p class="text-center text-xl text-red-500">Error al cargar los datos.</p>';
+    });
 }
 
 // Función para obtener detalles del cómic o personaje
@@ -95,12 +104,15 @@ function obtenerDetalles(id, tipo) {
             "content-type": "application/json",
         },
     })
-    .then((response) => response.json())
+    .then((response) => {
+        if (!response.ok) throw new Error('Error en la red');
+        return response.json();
+    })
     .then((data) => {
         const item = data.data.results[0];
 
         titulo.textContent = item.title || item.name;
-        imagen.src = item.thumbnail.path + "." + item.thumbnail.extension;
+        imagen.src = `${item.thumbnail.path}.${item.thumbnail.extension}`;
         descripcion.textContent = item.description || "Descripción no disponible.";
 
         let extraInfo = "";
@@ -115,7 +127,10 @@ function obtenerDetalles(id, tipo) {
         detalles.classList.remove('hidden');
         resultado.classList.add('hidden');
     })
-    .catch(error => console.error('Error al obtener detalles:', error));
+    .catch(error => {
+        console.error('Error al obtener detalles:', error);
+        alert('Error al cargar los detalles.');
+    });
 }
 
 // Evento para cerrar detalles
