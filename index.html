@@ -8,13 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Asegúrate de que la clase .font-bangers esté aplicada correctamente */
+        .font-bangers {
+            font-family: 'Bangers', cursive;
+        }
+    </style>
 </head>
 <body class="bg-gray-200">
 
     <!-- Titulo Principal -->
     <header class="bg-black py-1">
         <div class="bg-red-600 w-max mx-auto px-4 py-2">
-            <h1 class="font-bangers text-white text-5xl font-bold text-center" style="font-family: 'Bangers', cursive;">ADA COMICS</h1>
+            <h1 class="font-bangers text-white text-5xl font-bold text-center">ADA COMICS</h1>
         </div>
     </header>
 
@@ -24,7 +30,7 @@
     </section>
 
     <!-- Sección de búsqueda -->
-    <section class="p-4 px-32 pb-20" id="formBusqueda">
+    <section class="p-4 px-4 sm:px-32 pb-20" id="formBusqueda">
         <h2 class="text-xl font-bold mb-4">Búsqueda</h2>
         <form class="flex flex-col gap-4 sm:flex-row" id="formBusqueda">
             <div class="flex-2 sm:w-1/2 flex items-center gap-2">
@@ -52,8 +58,6 @@
                     <option value="oldest">Más viejos</option>
                 </select>
             </div>
-
-            
             <div class="flex-1 sm:w-1/4 flex items-end">
                 <button type="submit" class="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700">
                     BUSCAR
@@ -65,14 +69,14 @@
     <!-- Sección para mostrar resultados -->
     <div id="totalResultados" class="text-center mb-4 text-lg font-semibold"></div>
     <div class="p-6"> 
-        <div id="resultado" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 px-4 max-w-7xl mx-auto"></div>
+        <div id="resultado" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 max-w-7xl mx-auto"></div>
     </div>
 
     <!-- Contenedor para mostrar detalles del item seleccionado -->
     <div id="detalles" class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg mt-8 hidden">
-        <div class="flex gap-8">
-            <img id="imagen" class="w-1/3 h-auto" alt="Imagen">
-            <div>
+        <div class="flex flex-col md:flex-row gap-4">
+            <img id="imagen" class="w-full md:w-1/3 h-auto" alt="Imagen">
+            <div class="flex-1">
                 <h2 id="titulo" class="text-2xl font-bold mb-4"></h2>
                 <p id="descripcion" class="text-lg mb-4"></p>
                 <p id="fecha" class="text-sm font-medium mb-2"></p>
@@ -84,17 +88,15 @@
     </div>
 
     <!-- Contenedor para navegación -->
-
-<div class="flex flex-col items-center mt-6 mb-6">
-    <div class="flex gap-4">
-        <button id="btnPrimera" class="bg-red-500 text-white px-4 py-2 hover:bg-red-600 transition">Primera</button>
-        <button id="btnAnterior" class="bg-red-300 text-gray-700 px-4 py-2 disabled:opacity-50" disabled>Anterior</button>
-        <span id="paginaActual" class="text-lg font-bold">1</span>
-        <button id="btnSiguiente" class="bg-red-500 text-white px-4 py-2  hover:bg-red-600 transition">Siguiente</button>
-        <button id="btnUltima" class="bg-red-500 text-white px-4 py-2 hover:bg-red-600 transition">Última</button>
-    </div>
-</div>
-
+    <div class="flex flex-col items-center mt-6 mb-6">
+      <div class="flex gap-4">
+          <button id="btnPrimera" class="bg-red-500 text-white px-4 py-2 hover:bg-red-600 transition">Primera</button>
+          <button id="btnAnterior" class="bg-red-300 text-gray-700 px-4 py-2 disabled:opacity-50" disabled>Anterior</button>
+          <span id="paginaActual" class="text-lg font-bold">1</span>
+          <button id="btnSiguiente" class="bg-red-500 text-white px-4 py-2  hover:bg-red-600 transition">Siguiente</button>
+          <button id="btnUltima" class="bg-red-500 text-white px-4 py-2 hover:bg-red-600 transition">Última</button>
+      </div>
+  </div>
 
     <footer class="bg-black py-7">
         <p class="text-center text-white">Hecho con <span class="text-red-600">❤️</span> por Andrea</p>
